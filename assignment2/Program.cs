@@ -1,28 +1,35 @@
 ﻿// See https://aka.ms/new-console-template for more information
-//用“埃氏筛法”求2~ 100以内的素数。2~ 100以内的数，
-//先去掉2的倍数，再去掉3的倍数，再去掉4的倍数，
-//以此类推...最后剩下的就是素数
-
-namespace PrimeNumber
+//编写程序输出用户指定数据的所有素数因子。
+using System.Numerics;
+using System;
+namespace PrimeFactor
 {
-    class PrimeNumber
+    class PrimeFactor
     {
         static void Main(string[] args)
         {
-            for(int i = 2; i <= 100; i++)
+            Console.WriteLine("请输入一个正整数。");
+            String num = Console.ReadLine();
+            double n = double.Parse(num);
+            //double m = Math.Pow(n, 0.5);
+            Console.WriteLine("其素数因数如下:");
+            for (int i = 2; i <= n; i++)
             {
                 bool flag = true;
-                for(int j = 2; i > j; j++)
+                for (int j = 2; j < i; j++)
                 {
                     if (i % j == 0)
                     {
                         flag = false;
                         break;
-                    }                
+                    }
                 }
                 if (flag)
                 {
-                    Console.WriteLine(i + "是素数");
+                    if (n % i == 0)
+                    {
+                        Console.WriteLine(i);
+                    }
                 }
             }
         }
